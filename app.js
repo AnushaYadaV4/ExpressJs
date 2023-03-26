@@ -3,36 +3,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 
+const adminRoutes = require("./routes/admin");
+const shopRoutes = require("./routes/shop");
+
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use("/admin", adminRoutes);
+app.use("/shop", shopRoutes);
 
-app.use("/add-product", (req, res, next) => {
-  res.send(
-    '<form action="/product" method="POST"><input type="text" name="title"><input type="number" name="size"><button type="submit">Add product</button></form>'
-  );
+app.use((req, res, next) => {
+  res.status(400).send("<h1>OFFOOO!!! PAGE NOT FOUND<h1>");
 });
-
-app.use("/product", (req, res, next) => {
-  console.log(req.body);
-  res.redirect('/')
-  
-});
-
-app.use('/',(req,res,next)=>{
-    console.log("products are added!!!");
-    res.send('<h1>Products are added</h1>')
-    
-});
-
-
-/*app.use((req,res,next)=>{
-    console.log("In the another middleware");
-    //res.send('<h1> hello to node js </h1>')
-    res.send( { key1: "value" })
-});
-*/
 
 app.listen(2000);
-/*const server=http.createServer(app)
-
-server.listen(7000);
-*/
