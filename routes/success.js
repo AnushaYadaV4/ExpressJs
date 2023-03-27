@@ -5,8 +5,7 @@ const rootDir = require("../helper/path");
 const router = express.Router();
 
 router.get("/", (req, res, next) => {
-  console.log("products are added!!!");
-  res.sendFile(path.join(rootDir, "views", "shop.html"));
+  res.send('<h1>Form successfuly filled".</h1>');
 });
 
 module.exports = router;
