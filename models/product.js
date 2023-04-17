@@ -1,4 +1,31 @@
-const db=require('../helper/database');
+const Sequilize=require('sequelize');
+const sequelize=require('../helper/database');
+const Product=sequelize.define('product',
+{
+  id:{
+    type:Sequilize.INTEGER,
+    autoIncrement:true,
+    allowNull:false,
+    primaryKey:true
+  },
+  title:Sequilize.STRING,
+  prince:{
+    type:Sequilize.DOUBLE,
+    allowNull:false
+  },
+  description:{
+    type:Sequilize.STRING,
+    allowNull:false
+  },
+  imgUrl:{
+    type:Sequilize.STRING,
+    allowNull:false
+  }
+});
+
+module.exports=Product;
+
+/*const db=require('../helper/database');
 
 const Cart = require('./cart');
 
@@ -35,3 +62,4 @@ module.exports = class Product {
    
   }
 };
+*/
